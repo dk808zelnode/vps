@@ -1,0 +1,4 @@
+#!/bin/bash    
+
+./zcutil/fetch-params.sh && ./zcutil/build.sh -j$(nproc) && cd src
+/usr/bin/install -c zelcashd zelcash-cli zelcash-tx -t /usr/local/bin/
