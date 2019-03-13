@@ -56,14 +56,32 @@ Comparing with building from source manually, you will benefit from using this s
 SSH to your VPS and clone the Github repository:
 
 ```bash
-git clone https://github.com/masternodes/vps.git && cd vps
+git clone https://github.com/dk808zelnode/vps.git && cd vps
 ```
 
 Install & configure your desired master node with options:
 
 ```bash
-./install.sh -p pivx
+./install.sh -p zelcash -c 6 -n 6 -r "tags/v3.1.0"
 ```
+*To change amount of nodes to install change value of -c 6 to the amount you would like.*
+
+**Few steps to do after install script**
+* cd && cp -R .zcash-params /home/masternode
+* wget -U Mozilla/5.0 https://zelcore.io/zelcashbootstraptxindex.zip
+* unzip -o zelcashbootstraptxindex.zip -d /root/
+* cp -R blocks chainstate /var/lib/masternodes/zelcash1 *If you installed more than 1 node repeat this step but change zelcash1 to zelcash2 and so on for each node.*
+* rm -rf zelcashbootstraptxindex.zip
+
+**Add privkey to each conf that you will find in /etc/masternodes**
+
+**Start each node**
+* systemctl enable zelcash_n1
+* systemctl start zelcash_n1
+*To use cli for each node add the conf flag*
+* zelcash-cli -conf=/etc/masternodes/zelcash_n1.conf getinfo
+
+
 
 ## Examples for typical script invocation
 
