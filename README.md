@@ -53,6 +53,8 @@ Comparing with building from source manually, you will benefit from using this s
 
 ## Installation
 
+**Enable ipv6 before starting up the new server**
+
 SSH to your VPS and clone the Github repository:
 
 ```bash
